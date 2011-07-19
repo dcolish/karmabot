@@ -4,6 +4,7 @@
 # This file is part of 'karmabot' and is distributed under the BSD license.
 # See LICENSE for more details.
 
+from .facets import Facet
 from .register import facet_registry
 
 
@@ -20,7 +21,7 @@ class Subject(object):
     def add_facet(self, facet):
         if str(facet) in self.facets:
             return
-        if not isinstance(facet, str):
+        if not isinstance(facet, Facet):
             facet = facet_registry[facet](self)
         self.facets[str(facet)] = facet
 
